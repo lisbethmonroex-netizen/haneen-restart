@@ -1,0 +1,2202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hello, Haneen.</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(120, 156, 255, 0.14),
+            transparent 36%
+        ),
+        #050507;
+
+    color: #ffffff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+body::before,
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    opacity: 0.55;
+}
+
+body::before {
+
+    box-shadow:
+        5vw 10vh white,
+        12vw 32vh rgba(255,255,255,.6),
+        18vw 75vh white,
+        27vw 20vh rgba(255,255,255,.5),
+        34vw 55vh white,
+        41vw 12vh rgba(255,255,255,.7),
+        48vw 82vh white,
+        55vw 28vh rgba(255,255,255,.5),
+        63vw 67vh white,
+        71vw 14vh rgba(255,255,255,.6),
+        78vw 48vh white,
+        86vw 80vh rgba(255,255,255,.5),
+        94vw 25vh white;
+
+}
+
+body::after {
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0.4;
+
+    box-shadow:
+        8vw 55vh white,
+        16vw 12vh white,
+        23vw 90vh white,
+        31vw 40vh white,
+        38vw 70vh white,
+        45vw 30vh white,
+        52vw 60vh white,
+        60vw 8vh white,
+        67vw 88vh white,
+        74vw 35vh white,
+        82vw 65vh white,
+        90vw 15vh white,
+        97vw 72vh white;
+
+}
+
+.container {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding:
+        30px 20px;
+
+}
+
+.screen {
+
+    width: 100%;
+
+    max-width: 720px;
+
+    min-height: 75vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    animation:
+        screenIn .65s ease;
+
+}
+
+.screen.hidden {
+    display: none;
+}
+
+@keyframes screenIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(18px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+.eyebrow {
+
+    color: #789cff;
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 22px;
+
+}
+
+h1 {
+
+    margin: 0 0 28px;
+
+    font-size:
+        clamp(48px, 10vw, 88px);
+
+    line-height: .95;
+
+    letter-spacing: -4px;
+
+    font-weight: 700;
+
+    text-shadow:
+        0 0 35px
+        rgba(120,156,255,.18);
+
+}
+
+h2 {
+
+    margin: 0 0 25px;
+
+    font-size:
+        clamp(29px, 5vw, 48px);
+
+    line-height: 1.12;
+
+    letter-spacing: -1.5px;
+
+}
+
+p {
+
+    max-width: 620px;
+
+    margin:
+        0 auto 32px;
+
+    color: #b8b8c2;
+
+    font-size: 16px;
+
+    line-height: 1.85;
+
+}
+
+.subtle {
+
+    color: #70707c;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+}
+
+button {
+
+    font-family: inherit;
+
+}
+
+.main-button,
+.next-button {
+
+    border:
+        1px solid
+        rgba(120,156,255,.48);
+
+    background:
+        rgba(120,156,255,.07);
+
+    color: white;
+
+    padding:
+        16px 28px;
+
+    border-radius:
+        999px;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        background .25s ease,
+        border .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+.main-button:hover,
+.next-button:hover {
+
+    background:
+        rgba(120,156,255,.17);
+
+    border-color:
+        #789cff;
+
+    box-shadow:
+        0 0 28px
+        rgba(120,156,255,.16);
+
+    transform:
+        translateY(-2px);
+
+}
+
+.question-number {
+
+    color: #789cff;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 18px;
+
+    text-transform: uppercase;
+
+}
+
+.options {
+
+    width: 100%;
+
+    max-width: 560px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 11px;
+
+    margin-bottom: 20px;
+
+}
+
+.option {
+
+    width: 100%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    background:
+        rgba(255,255,255,.035);
+
+    color: #eeeeef;
+
+    border-radius:
+        15px;
+
+    padding:
+        17px 20px;
+
+    text-align: left;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        .25s ease;
+
+}
+
+.option:hover {
+
+    border-color:
+        rgba(120,156,255,.55);
+
+    background:
+        rgba(120,156,255,.07);
+
+    transform:
+        translateX(4px);
+
+}
+
+.option.selected {
+
+    border-color:
+        #789cff;
+
+    background:
+        rgba(120,156,255,.14);
+
+    box-shadow:
+        0 0 22px
+        rgba(120,156,255,.07);
+
+}
+
+.response {
+
+    min-height: 22px;
+
+    color: #789cff;
+
+    font-size: 13px;
+
+    margin-bottom: 17px;
+
+}
+
+.next-button {
+
+    display: none;
+
+}
+
+.next-button.visible {
+
+    display: inline-block;
+
+}
+
+textarea {
+
+    width: 100%;
+
+    max-width: 560px;
+
+    min-height: 155px;
+
+    padding: 18px;
+
+    margin-bottom: 18px;
+
+    border-radius: 16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.035);
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    outline: none;
+
+    resize: vertical;
+
+    transition:
+        border .25s ease,
+        box-shadow .25s ease;
+
+}
+
+textarea:focus {
+
+    border-color:
+        rgba(120,156,255,.75);
+
+    box-shadow:
+        0 0 25px
+        rgba(120,156,255,.08);
+
+}
+
+textarea::placeholder {
+
+    color: #676772;
+
+}
+
+.glow-line {
+
+    width: 55px;
+
+    height: 1px;
+
+    background:
+        #789cff;
+
+    box-shadow:
+        0 0 15px
+        rgba(120,156,255,.8);
+
+    margin:
+        0 auto 30px;
+
+}
+
+.photo-wrap {
+
+    width: 100%;
+
+    max-width: 560px;
+
+    margin:
+        15px auto 35px;
+
+    opacity: 0;
+
+    transform:
+        translateY(18px)
+        scale(.985);
+
+    animation:
+        photoReveal 1.2s ease forwards;
+
+}
+
+@keyframes photoReveal {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+.photo {
+
+    display: block;
+
+    width: 100%;
+
+    max-height: 520px;
+
+    object-fit: cover;
+
+    border-radius: 22px;
+
+    border:
+        1px solid
+        rgba(120,156,255,.22);
+
+    box-shadow:
+        0 0 45px
+        rgba(120,156,255,.10),
+        0 20px 70px
+        rgba(0,0,0,.38);
+
+}
+
+.photo-caption {
+
+    margin:
+        16px auto 0;
+
+    max-width: 500px;
+
+    color: #777784;
+
+    font-size: 12px;
+
+    letter-spacing: .3px;
+
+    line-height: 1.7;
+
+}
+
+.teacher-title {
+
+    color: #789cff;
+
+    font-size:
+        clamp(35px, 8vw, 70px);
+
+    font-weight: 700;
+
+    letter-spacing:
+        -3px;
+
+    line-height: 1;
+
+    margin-bottom: 28px;
+
+}
+
+.quote {
+
+    max-width: 620px;
+
+    color: #e5e5ea;
+
+    font-size:
+        clamp(21px, 4vw, 30px);
+
+    line-height: 1.45;
+
+    margin:
+        0 auto 28px;
+
+}
+
+.quote-small {
+
+    color: #789cff;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    max-width: 550px;
+
+    margin:
+        0 auto 30px;
+
+}
+
+.heart {
+
+    color: #789cff;
+
+    font-size: 24px;
+
+    margin-top: 5px;
+
+    animation:
+        heartbeat 2s ease-in-out infinite;
+
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .container {
+
+        padding:
+            25px 17px;
+
+    }
+
+    .screen {
+
+        min-height:
+            78vh;
+
+    }
+
+    h1 {
+
+        letter-spacing:
+            -3px;
+
+    }
+
+    p {
+
+        font-size:
+            15px;
+
+    }
+
+    .option {
+
+        font-size:
+            13px;
+
+        padding:
+            16px;
+
+    }
+
+    .photo {
+
+        max-height:
+            430px;
+
+        border-radius:
+            18px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<section id="screen1" class="screen">
+
+    <div class="eyebrow">
+        A little something for you
+    </div>
+
+    <h1>
+        Hello,<br>
+        Haneen.
+    </h1>
+
+    <p>
+        I think we should meet again.<br>
+        Not for the first time.<br>
+        Just with a fresh perspective.
+    </p>
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="showScreen('screen2')"
+    >
+        LET ME MEET YOU AGAIN
+    </button>
+
+</section>
+
+
+<section id="screen2" class="screen hidden">
+
+    <div class="question-number">
+        01 / GETTING TO KNOW YOU
+    </div>
+
+    <h2>
+        What's your favorite thing to eat
+        when you're having a terrible day?
+    </h2>
+
+    <div class="options">
+
+        <button
+            class="option"
+            type="button"
+            onclick="chooseAnswer(
+                this,
+                'Donuts',
+                'food',
+                'response1',
+                'next1'
+            )"
+        >
+            Donuts
+        </button>
+
+        <button
+            class="option"
+            type="button"
+            onclick="chooseAnswer(
+                this,
+                'Carrot cake',
+                'food',
+                'response1',
+                'next1'
+            )"
+        >
+            Carrot cake
+        </button>
+
+        <button
+            class="option"
+            type="button"
+            onclick="chooseAnswer(
+                this,
+                'Banana cake',
+                'food',
+                'response1',
+                'next1'
+            )"
+        >
+            Banana cake
+        </button>
+
+        <button
+            class="option"
+            type="button"
+            onclick="chooseAnswer(
+                this,
+                'Something unhealthy and irresponsible',
+                'food',
+                'response1',
+                'next1'
+            )"
+        >
+            Something unhealthy and irresponsible
+        </button>
+
+    </div>
+
+    <div id="response1" class="response"></div>
+
+    <button
+        id="next1"
+        class="next-button"
+        type="button"
+        onclick="showScreen('screen3')"
+    >
+        NEXT →
+    </button>
+
+</section>
+
+
+<section id="screen3" class="screen hidden">
+
+    <div class="question-number">
+        02 / SOMETHING I DON'T KNOW
+    </div>
+
+    <h2>
+        Tell me something about you
+        I don't know yet.
+    </h2>
+
+    <p>
+        It can be something small.
+        Something random.
+        Something important.
+        Anything you want me to know.
+    </p>
+
+    <textarea
+        id="textAnswer"
+        placeholder="I'm listening..."
+    ></textarea>
+
+    <div id="response2" class="response"></div>
+
+    <button
+        id="next2"
+        class="next-button"
+        type="button"
+        onclick="saveTextAndContinue()"
+    >
+        NEXT →
+    </button>
+
+</section>
+
+
+<section id="screen4" class="screen hidden">
+
+    <div class="question-number">
+        03 / WHAT MATTERS
+    </div>
+
+    <h2>
+        What makes you feel
+        genuinely cared for?
+    </h2>
+
+    <div class="options">
+
+        <button
+            class="option"
+            type="button"
+            onclick="chooseAnswer(
+                this,
+                'Someone who listens',
+                'care',
+                'response3',
+                'next3'
+            )"
+        >
+            Someone who listens.
+        </button>
+
+        <button
+            class="option"
+            type="button"
+            onclick="chooseAnswer(
+                this,
+                'Someone who gives me space',
+                'care',
+                'response3',
+                'next3'
+            )"
+        >
+            Someone who gives me space.
+        </button>
+
+        <button
+            class="option"
+            type="button"
+            onclick="chooseAnswer(
+                this,
+                'Someone who makes me laugh',
+                'care',
+                'response3',
+                'next3'
+            )"
+        >
+            Someone who makes me laugh.
+        </button>
+
+        <button
+            class="option"
+            type="button"
+            onclick="chooseAnswer(
+                this,
+                'Someone who shows it instead of just saying it',
+                'care',
+                'response3',
+                'next3'
+            )"
+        >
+            Someone who shows it instead of just saying it.
+        </button>
+
+    </div>
+
+    <div id="response3" class="response"></div>
+
+    <button
+        id="next3"
+        class="next-button"
+        type="button"
+        onclick="showScreen('screen5')"
+    >
+        NEXT →
+    </button>
+
+</section>
+
+
+<section id="screen5" class="screen hidden">
+
+    <div class="question-number">
+        04 / A LITTLE MORE
+    </div>
+
+    <h2>
+        What's something
+        that always makes you smile?
+    </h2>
+
+    <div class="options">
+
+        <button
+            class="option"
+            type="button"
+            onclick="chooseAnswer(
+                this,
+                'A stupid joke',
+                'smile',
+                'response4',
+                'next4'
+            )"
+        >
+            A stupid joke.
+        </button>
+
+        <button
+            class="option"
+            type="button"
+            onclick="chooseAnswer(
+                this,
+                'A good song',
+                'smile',
+                'response4',
+                'next4'
+            )"
+        >
+            A good song.
+        </button>
+
+        <button
+            class="option"
+            type="button"
+            onclick="chooseAnswer(
+                this,
+                'Food',
+                'smile',
+                'response4',
+                'next4'
+            )"
+        >
+            Food.
+        </button>
+
+        <button
+            class="option"
+            type="button"
+            onclick="chooseAnswer(
+                this,
+                'Something unexpectedly sweet',
+                'smile',
+                'response4',
+                'next4'
+            )"
+        >
+            Something unexpectedly sweet.
+        </button>
+
+    </div>
+
+    <div id="response4" class="response"></div>
+
+    <button
+        id="next4"
+        class="next-button"
+        type="button"
+        onclick="showScreen('screen6')"
+    >
+        NEXT →
+    </button>
+
+</section>
+
+
+<section id="screen6" class="screen hidden">
+
+    <div class="question-number">
+        05 / LAST QUESTION
+    </div>
+
+    <h2>
+        What's something
+        you wish people understood about you?
+    </h2>
+
+    <textarea
+        id="understoodAnswer"
+        placeholder="You can be honest."
+    ></textarea>
+
+    <div id="response5" class="response"></div>
+
+    <button
+        id="next5"
+        class="next-button"
+        type="button"
+        onclick="saveUnderstoodAndContinue()"
+    >
+        NEXT →
+    </button>
+
+</section>
+
+
+<section id="screen7" class="screen hidden">
+
+    <div class="eyebrow">
+        wait...
+    </div>
+
+    <h2>
+        I think I know<br>
+        this girl.
+    </h2>
+
+    <div class="photo-wrap">
+
+        <img
+            src="photo1.jpg"
+            alt="Haneen on her first day"
+            class="photo"
+        >
+
+        <div class="photo-caption">
+            I remember her.
+        </div>
+
+    </div>
+
+    <p>
+        But I think there's still
+        a lot I don't know.
+    </p>
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="showScreen('screen8')"
+    >
+        KEEP GOING
+    </button>
+
+</section>
+
+
+<section id="screen8" class="screen hidden">
+
+    <div class="eyebrow">
+        maybe
+    </div>
+
+    <h2>
+        I think I've been<br>
+        doing this wrong.
+    </h2>
+
+    <div class="glow-line"></div>
+
+    <p>
+        I've spent a lot of time trying to explain
+        how I feel.<br><br>
+
+        Maybe what you actually wanted
+        was to see something different.
+    </p>
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="showScreen('screen9')"
+    >
+        SO LET ME SHOW YOU
+    </button>
+
+</section>
+
+
+<section id="screen9" class="screen hidden">
+
+    <div class="eyebrow">
+        one small pause
+    </div>
+
+    <h2>
+        Before we continue...
+    </h2>
+
+    <p>
+        Take a second.<br>
+        There's nowhere you need to rush to.
+    </p>
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="startExperience()"
+    >
+        I'M READY
+    </button>
+
+    <div
+        class="subtle"
+        style="margin-top:20px;"
+    >
+        turn the page when you're ready
+    </div>
+
+</section>
+
+
+<section id="screen10" class="screen hidden">
+
+    <div class="eyebrow">
+        round two
+    </div>
+
+    <h2>
+        Maybe I don't need to know
+        everything about you already.
+    </h2>
+
+    <p>
+        Maybe I just need to keep learning.
+    </p>
+
+    <div class="glow-line"></div>
+
+    <p>
+        And maybe that's something
+        we can do together.
+    </p>
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="showScreen('screen11')"
+    >
+        KEEP GOING →
+    </button>
+
+</section>
+
+
+<section id="screen11" class="screen hidden">
+
+    <div class="eyebrow">
+        together
+    </div>
+
+    <h2>
+        Keep learning.<br>
+        Keep listening.<br>
+        Keep talking.
+    </h2>
+
+    <p>
+        We don't have to have every answer right away.
+    </p>
+
+    <p>
+        Maybe we just have to keep choosing
+        to understand each other.
+    </p>
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="showScreen('screen12')"
+    >
+        NEXT →
+    </button>
+
+</section>
+
+
+<section id="screen12" class="screen hidden">
+
+    <div class="eyebrow">
+        and now
+    </div>
+
+    <h2>
+        There's something else
+        I want to celebrate today.
+    </h2>
+
+    <div class="glow-line"></div>
+
+    <p>
+        I know there's a part of your life
+        that deserves a little more attention today.
+    </p>
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="showScreen('screen13')"
+    >
+        LET ME SHOW YOU
+    </button>
+
+</section>
+
+
+<section id="screen13" class="screen hidden">
+
+    <div class="eyebrow">
+        the teacher in you
+    </div>
+
+    <div class="teacher-title">
+        THE TEACHER<br>
+        IN YOU.
+    </div>
+
+    <div class="photo-wrap">
+
+        <img
+            src="photo2.jpg"
+            alt="Haneen with her students"
+            class="photo"
+        >
+
+        <div class="photo-caption">
+            Maybe this is the part of you
+            I don't get to see enough.
+        </div>
+
+    </div>
+
+    <p>
+        Being a teacher isn't just standing
+        in front of a classroom and explaining things.
+    </p>
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="showScreen('screen14')"
+    >
+        KEEP GOING
+    </button>
+
+</section>
+
+
+<section id="screen14" class="screen hidden">
+
+    <p class="quote">
+        It's noticing when someone is struggling.
+    </p>
+
+    <p class="quote">
+        It's answering the same question
+        for the tenth time without making
+        them feel stupid.
+    </p>
+
+    <p class="quote">
+        It's being patient when you're tired.
+    </p>
+
+    <p class="quote">
+        It's trying again when something
+        doesn't work the first time.
+    </p>
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="showScreen('screen15')"
+    >
+        NEXT →
+    </button>
+
+</section>
+
+
+<section id="screen15" class="screen hidden">
+
+    <div class="eyebrow">
+        what you leave behind
+    </div>
+
+    <h2>
+        Sometimes it's<br>
+        something you made.
+    </h2>
+
+    <div class="photo-wrap">
+
+        <img
+            src="photo3.jpg"
+            alt="Haneen working on a school activity"
+            class="photo"
+        >
+
+        <div class="photo-caption">
+            Sometimes it's something
+            you made with your own hands.
+        </div>
+
+    </div>
+
+    <p>
+        Sometimes it's a classroom.
+    </p>
+
+    <p>
+        Sometimes it's a memory your students
+        will carry without you even knowing.
+    </p>
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="showScreen('screen16')"
+    >
+        NEXT →
+    </button>
+
+</section>
+
+
+<section id="screen16" class="screen hidden">
+
+    <div class="eyebrow">
+        one of many moments
+    </div>
+
+    <div class="photo-wrap">
+
+        <img
+            src="photo4.jpg"
+            alt="Haneen with her students"
+            class="photo"
+        >
+
+        <div class="photo-caption">
+            You may never know which of these
+            moments stays with them.
+        </div>
+
+    </div>
+
+    <p class="quote-small">
+        You may never know which student
+        remembers something you said years from now.
+    </p>
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="showScreen('screen17')"
+    >
+        NEXT →
+    </button>
+
+</section>
+
+
+<section id="screen17" class="screen hidden">
+
+    <div class="question-number">
+        ONE LAST QUESTION
+    </div>
+
+    <h2>
+        If one of your students remembered
+        only one thing about you years from now,
+        what would you want it to be?
+    </h2>
+
+    <textarea
+        id="teacherAnswer"
+        placeholder="Take your time..."
+    ></textarea>
+
+    <div
+        id="teacherResponse"
+        class="response"
+    ></div>
+
+    <button
+        id="teacherNext"
+        class="next-button"
+        type="button"
+        onclick="saveTeacherAnswer()"
+    >
+        NEXT →
+    </button>
+
+</section>
+
+
+<section id="screen18" class="screen hidden">
+
+    <div class="eyebrow">
+        I hope they remember that
+    </div>
+
+    <p class="quote">
+        Because I think the best teachers
+        aren't always remembered
+        for the things they taught.
+    </p>
+
+    <div class="glow-line"></div>
+
+    <p class="quote">
+        They're remembered for
+        how they made people feel.
+    </p>
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="showScreen('screen19')"
+    >
+        NEXT →
+    </button>
+
+</section>
+
+
+<section id="screen19" class="screen hidden">
+
+    <div class="eyebrow">
+        another part of you
+    </div>
+
+    <div class="photo-wrap">
+
+        <img
+            src="photo5.jpg"
+            alt="Haneen"
+            class="photo"
+        >
+
+        <div class="photo-caption">
+            Maybe this is another part of you
+            I'd like to know better.
+        </div>
+
+    </div>
+
+    <p>
+        Not just the version of you I already know.
+    </p>
+
+    <p>
+        All the little versions
+        I haven't met yet.
+    </p>
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="showScreen('screen20')"
+    >
+        KEEP GOING
+    </button>
+
+</section>
+
+
+<section id="screen20" class="screen hidden">
+
+    <p>
+        I don't know every story from your classroom.
+    </p>
+
+    <p>
+        I don't know every student you've helped.
+    </p>
+
+    <p>
+        And I probably don't know all the little things
+        you do that make you a good teacher.
+    </p>
+
+    <div class="glow-line"></div>
+
+    <h2>
+        But I'd like to.
+    </h2>
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="showScreen('screen21')"
+    >
+        ONE LAST THING
+    </button>
+
+</section>
+
+
+<section id="screen21" class="screen hidden">
+
+    <div class="eyebrow">
+        for you
+    </div>
+
+    <h2>
+        Happy Teacher's Day,<br>
+        Haneen.
+    </h2>
+
+    <div class="glow-line"></div>
+
+    <p>
+        I hope today reminds you
+        that what you do matters.
+    </p>
+
+    <p>
+        Not just because you're a teacher.
+    </p>
+
+    <p>
+        But because somewhere,
+        in ways you'll probably never see,
+        you become part of someone's story.
+    </p>
+
+    <p>
+        And that's something worth being proud of.
+    </p>
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="showScreen('screen22')"
+    >
+        KEEP GOING
+    </button>
+
+</section>
+
+
+<section id="screen22" class="screen hidden">
+
+    <div class="eyebrow">
+        maybe
+    </div>
+
+    <h2>
+        Maybe that's what
+        I want us to do too.
+    </h2>
+
+    <div class="glow-line"></div>
+
+    <p class="quote-small">
+        Keep learning.
+    </p>
+
+    <p class="quote-small">
+        Keep listening.
+    </p>
+
+    <p class="quote-small">
+        Keep talking.
+    </p>
+
+    <p class="quote-small">
+        Keep choosing to understand each other.
+    </p>
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="showScreen('screen23')"
+    >
+        ♡
+    </button>
+
+</section>
+
+
+<section id="screen23" class="screen hidden">
+
+    <div class="eyebrow">
+        for my teacher
+    </div>
+
+    <h2>
+        Happy Teacher's Day,<br>
+        honey.
+    </h2>
+
+    <div class="glow-line"></div>
+
+    <p>
+        Here's to everything you teach,
+        everything you give,
+        and everything you don't even realize
+        you leave behind.
+    </p>
+
+    <p>
+        And here's to us —
+        still learning,
+        still listening,
+        still talking.
+    </p>
+
+    <div class="heart">
+        ♡
+    </div>
+
+</section>
+
+</div>
+
+
+<audio
+    id="bgMusic"
+    src="music.mp3"
+    loop
+    preload="auto"
+>
+</audio>
+
+
+<script>
+
+/* =========================================
+   EMAIL SYSTEM
+   ========================================= */
+
+const EMAIL_ADDRESS =
+    "akarsubeyza37@gmail.com";
+
+
+const FORM_SUBMIT_URL =
+    "https://formsubmit.co/ajax/" +
+    EMAIL_ADDRESS;
+
+
+/*
+   Bu fonksiyon cevapları arka planda
+   e-posta adresine gönderir.
+
+   Kullanıcı başka bir sayfaya gönderilmez.
+*/
+
+async function sendAnswerToEmail(
+    question,
+    answer
+) {
+
+    if (
+        !answer ||
+        answer.trim() === ""
+    ) {
+
+        return;
+
+    }
+
+
+    const formData =
+        new URLSearchParams();
+
+
+    formData.append(
+        "subject",
+        "Haneen — New Answer"
+    );
+
+
+    formData.append(
+        "question",
+        question
+    );
+
+
+    formData.append(
+        "answer",
+        answer
+    );
+
+
+    formData.append(
+        "source",
+        window.location.href
+    );
+
+
+    formData.append(
+        "_captcha",
+        "false"
+    );
+
+
+    try {
+
+        await fetch(
+            FORM_SUBMIT_URL,
+            {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type":
+                        "application/x-www-form-urlencoded"
+                },
+
+                body:
+                    formData.toString()
+
+            }
+        );
+
+        console.log(
+            "Answer sent."
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Email could not be sent:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   ANSWERS
+   ========================================= */
+
+const answers = {
+
+    food: "",
+
+    something: "",
+
+    care: "",
+
+    smile: "",
+
+    understood: "",
+
+    teacher: ""
+
+};
+
+
+/* =========================================
+   SCREEN SYSTEM
+   ========================================= */
+
+function showScreen(screenId) {
+
+    const screens =
+        document.querySelectorAll(".screen");
+
+
+    screens.forEach(
+        function(screen) {
+
+            screen.classList.add(
+                "hidden"
+            );
+
+        }
+    );
+
+
+    const target =
+        document.getElementById(
+            screenId
+        );
+
+
+    if (target) {
+
+        target.classList.remove(
+            "hidden"
+        );
+
+    }
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* =========================================
+   MULTIPLE CHOICE
+   ========================================= */
+
+function chooseAnswer(
+    button,
+    answer,
+    answerKey,
+    responseId,
+    nextId
+) {
+
+    const options =
+        button
+        .parentElement
+        .querySelectorAll(
+            ".option"
+        );
+
+
+    options.forEach(
+        function(option) {
+
+            option.classList.remove(
+                "selected"
+            );
+
+        }
+    );
+
+
+    button.classList.add(
+        "selected"
+    );
+
+
+    answers[answerKey] =
+        answer;
+
+
+    const response =
+        document.getElementById(
+            responseId
+        );
+
+
+    response.textContent =
+        "Got it. I'm listening.";
+
+
+    const nextButton =
+        document.getElementById(
+            nextId
+        );
+
+
+    nextButton.classList.add(
+        "visible"
+    );
+
+
+    /*
+       CEVABI ANINDA GÖNDER
+    */
+
+    const questionMap = {
+
+        food:
+            "What's your favorite thing to eat when you're having a terrible day?",
+
+        care:
+            "What makes you feel genuinely cared for?",
+
+        smile:
+            "What's something that always makes you smile?"
+
+    };
+
+
+    sendAnswerToEmail(
+        questionMap[answerKey],
+        answer
+    );
+
+}
+
+
+/* =========================================
+   TEXT ANSWER — SOMETHING I DON'T KNOW
+   ========================================= */
+
+const textAnswer =
+    document.getElementById(
+        "textAnswer"
+    );
+
+
+textAnswer.addEventListener(
+    "input",
+    function() {
+
+        const response =
+            document.getElementById(
+                "response2"
+            );
+
+        const nextButton =
+            document.getElementById(
+                "next2"
+            );
+
+
+        if (
+            textAnswer.value
+            .trim()
+            .length > 0
+        ) {
+
+            response.textContent =
+                "I'm listening.";
+
+            nextButton.classList.add(
+                "visible"
+            );
+
+        }
+
+        else {
+
+            response.textContent =
+                "";
+
+            nextButton.classList.remove(
+                "visible"
+            );
+
+        }
+
+    }
+);
+
+
+async function saveTextAndContinue() {
+
+    answers.something =
+        textAnswer.value.trim();
+
+
+    await sendAnswerToEmail(
+
+        "Tell me something about you I don't know yet.",
+
+        answers.something
+
+    );
+
+
+    showScreen(
+        "screen4"
+    );
+
+}
+
+
+/* =========================================
+   UNDERSTANDING
+   ========================================= */
+
+const understoodAnswer =
+    document.getElementById(
+        "understoodAnswer"
+    );
+
+
+understoodAnswer.addEventListener(
+    "input",
+    function() {
+
+        const response =
+            document.getElementById(
+                "response5"
+            );
+
+        const nextButton =
+            document.getElementById(
+                "next5"
+            );
+
+
+        if (
+            understoodAnswer.value
+            .trim()
+            .length > 0
+        ) {
+
+            response.textContent =
+                "Thank you for telling me.";
+
+            nextButton.classList.add(
+                "visible"
+            );
+
+        }
+
+        else {
+
+            response.textContent =
+                "";
+
+            nextButton.classList.remove(
+                "visible"
+            );
+
+        }
+
+    }
+);
+
+
+async function saveUnderstoodAndContinue() {
+
+    answers.understood =
+        understoodAnswer.value.trim();
+
+
+    await sendAnswerToEmail(
+
+        "What's something you wish people understood about you?",
+
+        answers.understood
+
+    );
+
+
+    showScreen(
+        "screen7"
+    );
+
+}
+
+
+/* =========================================
+   MUSIC
+   ========================================= */
+
+function startExperience() {
+
+    const music =
+        document.getElementById(
+            "bgMusic"
+        );
+
+
+    music.volume =
+        0.45;
+
+
+    music.play()
+        .catch(
+            function(error) {
+
+                console.log(
+                    "Music could not start:",
+                    error
+                );
+
+            }
+        );
+
+
+    showScreen(
+        "screen10"
+    );
+
+}
+
+
+/* =========================================
+   TEACHER QUESTION
+   ========================================= */
+
+const teacherAnswer =
+    document.getElementById(
+        "teacherAnswer"
+    );
+
+
+teacherAnswer.addEventListener(
+    "input",
+    function() {
+
+        const response =
+            document.getElementById(
+                "teacherResponse"
+            );
+
+        const nextButton =
+            document.getElementById(
+                "teacherNext"
+            );
+
+
+        if (
+            teacherAnswer.value
+            .trim()
+            .length > 0
+        ) {
+
+            response.textContent =
+                "I'll remember that.";
+
+            nextButton.classList.add(
+                "visible"
+            );
+
+        }
+
+        else {
+
+            response.textContent =
+                "";
+
+            nextButton.classList.remove(
+                "visible"
+            );
+
+        }
+
+    }
+);
+
+
+async function saveTeacherAnswer() {
+
+    answers.teacher =
+        teacherAnswer.value.trim();
+
+
+    await sendAnswerToEmail(
+
+        "If one of your students remembered only one thing about you years from now, what would you want it to be?",
+
+        answers.teacher
+
+    );
+
+
+    showScreen(
+        "screen18"
+    );
+
+}
+
+</script>
+
+</body>
+</html>
